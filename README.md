@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Setting Up Gmail for Sending Emails Using Nodemailer
+To use Gmail for sending emails with Nodemailer, you need to generate an App Password and configure it in your project. Follow these steps:
 
-## Getting Started
+Step 1: Log in to Your Google Account
+Open your browser and go to "Google Account Security" Settings.
+Log in with the Gmail account you want to use for sending emails.
+Step 2: Enable 2-Step Verification
+In the Security section, scroll down to the Signing in to Google section.
+Click on 2-Step Verification.
+Follow the on-screen instructions to enable it. You may need:
+Your phone number for verification.
+A security app like Google Authenticator for generating codes.
+Step 3: Generate an App Password
+After enabling 2-Step Verification, go back to the Security tab.
 
-First, run the development server:
+Under the Signing in to Google section, click on App Passwords.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Note: If you don’t see the "App Passwords" option:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ensure 2-Step Verification is enabled.
+Confirm you're logged into your primary Google Account (not a Google Workspace account that might have restricted settings).
+In the App Passwords section:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+For Select the app, choose Mail.
+For Select the device, choose Other (Custom name).
+Enter a custom name like NodeMailer App and click Generate.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Step 4: Copy the Generated App Password
+Google will display a 16-character App Password (e.g., abcd-efgh-ijkl-mnop).
+Copy this password (without spaces) and store it securely.
