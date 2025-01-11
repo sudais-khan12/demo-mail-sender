@@ -10,23 +10,28 @@ interface User {
 }
 
 const users: User[] = [
-  { email: "example@gmail.com", name: "User One" },
-  { email: "example@gmail.com", name: "User Two" },
+  { email: "batm44619@gmail.com", name: "User One" },
+  { email: "lleto6522@gmail.com", name: "User Two" },
+  { email: "saif.ur.rehman.waisa@gmail.com", name: "User Three" },
 ];
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  // Schedule a job to run every 30 seconds
+  // Schedule a job to run every 30 secs
   cron.schedule("*/30 * * * * *", async () => {
     console.log("Sending scheduled emails...");
-    for (const user of users) {
-      const emailHtml = await render(<ScheduledEmail name={user.name} />);
-      await sendEmail({
-        to: user.email,
-        subject: "Scheduled Email",
-        html: emailHtml,
-      });
-    }
+
+    // Prepare the email content
+    const emailHtml = await render(<ScheduledEmail name="All Users" />);
+
+    // Send the email to all users at once
+    await sendEmail({
+      to: users.map((user) => user.email), 
+      subject: "Scheduled Email",
+      html: emailHtml,
+    });
+
+    console.log("Emails sent successfully!");
   });
 
-  res.status(200).json({ message: "Cron job started (runs every 30 seconds)" });
+  res.status(200).json({ message: "Cron job started" });
 }
