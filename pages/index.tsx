@@ -1,17 +1,19 @@
+import { LoginUser } from "@/actions/action";
 import { useState } from "react";
 
 export default function Home() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleLogin = async () => {
-    const response = await fetch("/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, name }),
-    });
-    const data = await response.json();
-    console.log(data);
+    const { success } = await LoginUser(email, name);
+
+    if (success) {
+      setMessage("Login successful and email sent");
+    } else {
+      setMessage("Error logging in");
+    }
   };
 
   return (
@@ -23,21 +25,22 @@ export default function Home() {
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full p-10 mb-4 border rounded"
+          className="w-full p-2 mb-4 border rounded"
         />
         <input
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full p-10 mb-4 border rounded"
+          className="w-full p-2 mb-4 border rounded"
         />
         <button
           onClick={handleLogin}
-          className="w-full p-10 bg-blue-500 text-white rounded hover:bg-blue-600 text-lg"
+          className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600 "
         >
           Login
         </button>
+        {message && <p className="mt-4 text-center text-gray-600">{message}</p>}
       </div>
     </div>
   );

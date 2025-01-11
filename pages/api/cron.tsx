@@ -10,8 +10,8 @@ interface User {
 }
 
 const users: User[] = [
-  { email: "lleto6522@gmail.com", name: "User One" },
-  { email: "batm44619@gmail.com", name: "User Two" },
+  { email: "example@gmail.com", name: "User One" },
+  { email: "example@gmail.com", name: "User Two" },
 ];
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
