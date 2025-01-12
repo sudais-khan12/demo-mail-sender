@@ -16,8 +16,8 @@ const users: User[] = [
 ];
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  // Schedule a job to run every 30 secs
-  cron.schedule("*/30 * * * * *", async () => {
+  // Schedule a job to run every 10 secs
+  cron.schedule("*/10 * * * * *", async () => {
     console.log("Sending scheduled emails...");
 
     // Prepare the email content
